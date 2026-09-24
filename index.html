@@ -30,12 +30,12 @@
   --paper:#FCFAF6; --paper-ink:#5E5654;
   --hand:"Gaegu", "Comic Sans MS", "Chalkboard SE", "Segoe Print", cursive;
   --serif:var(--hand); --sans:var(--hand);
-  --w:min(43vw, calc((100vh - 290px) * .75), 380px);
+  --w:min(44vw, calc((100vh - 215px) * .75), 540px);
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@supports (height:100dvh){ :root{ --w:min(43vw, calc((100dvh - 290px) * .75), 380px); } }
+@supports (height:100dvh){ :root{ --w:min(44vw, calc((100dvh - 215px) * .75), 540px); } }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){ --bg:#2E2A29; --bg-ink:#EDE5DF; --bg-soft:#A9A09B; }
 }
@@ -292,7 +292,7 @@ html.gummy-dragging,html.gummy-dragging *{cursor:grabbing!important}
 @keyframes float{from{translate:0 -5px}to{translate:0 6px}}
 @keyframes peek{0%,100%{transform:translateZ(var(--z,0px)) rotateY(0deg)}45%{transform:translateZ(var(--z,0px)) rotateY(-24deg)}}
 .leaf.hint{animation:peek 1.4s ease-in-out 1.4s 1}
-@media (max-width:600px){ :root{ --w:min(45vw, calc((100vh - 290px) * .75)); } .book{font-size:calc(var(--w) * .05)} }
+@media (max-width:600px){ :root{ --w:min(46.5vw, calc((100vh - 215px) * .75)); } .book{font-size:calc(var(--w) * .05)} }
 @media (prefers-reduced-motion:reduce){ .dragarrow{animation:none} .curt>.f,.sign-face,.bulbs span{animation:none} .b3{transition:none} .star{animation:none} .star img{animation:blink var(--td,3s) ease-in-out var(--dl,0s) infinite} .heart{animation:none} .book,.leaf,.edge,.orbit,.lit{transition-duration:.01s} .leaf.hint{animation:none} }
 
 /* typewriter (page 5) */
@@ -509,6 +509,9 @@ html.gummy-dragging,html.gummy-dragging *{cursor:grabbing!important}
 
 
 <script>
+// render 3D canvases sharper than the screen, then let the browser scale them down (crisper edges, smoother text)
+window.__rs=function(cw,ch){ var d=window.devicePixelRatio||1, k=Math.max(2,Math.min(d*1.25,2.5)), a=Math.max(1,cw*ch);
+  if(a*k*k>5e6) k=Math.max(Math.min(d,2),Math.sqrt(5e6/a)); return k; };
 (function(){
   var stage=document.getElementById('stage'), orbit=document.getElementById('orbit'), book=document.getElementById('book');
   var leaves=[].slice.call(book.querySelectorAll('.leaf')), N=leaves.length, state=0;
@@ -1140,7 +1143,7 @@ html.gummy-dragging,html.gummy-dragging *{cursor:grabbing!important}
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,mesh.i);gl.drawElements(gl.TRIANGLES,mesh.n,gl.UNSIGNED_SHORT,0);
   };
   Renderer.prototype.size=function(){
-    var c=this.canvas,dpr=Math.min(window.devicePixelRatio||1,2),w=Math.max(1,Math.round(c.clientWidth*dpr)),h=Math.max(1,Math.round(c.clientHeight*dpr));
+    var c=this.canvas,dpr=window.__rs(c.clientWidth,c.clientHeight),w=Math.max(1,Math.round(c.clientWidth*dpr)),h=Math.max(1,Math.round(c.clientHeight*dpr));
     if(c.width!==w||c.height!==h){c.width=w;c.height=h;} return [w,h];
   };
 
@@ -1740,7 +1743,7 @@ html.gummy-dragging,html.gummy-dragging *{cursor:grabbing!important}
   // ---------- frame ----------
   function eye(){var az=cam.az*Math.PI/180,el=cam.el*Math.PI/180,t=cam.target;return [t[0]+cam.dist*Math.cos(el)*Math.sin(az),t[1]+cam.dist*Math.sin(el),t[2]+cam.dist*Math.cos(el)*Math.cos(az)];}
   function render(now){
-    var dpr=Math.min(window.devicePixelRatio||1,2),w=Math.max(1,Math.round(cv.clientWidth*dpr)),h=Math.max(1,Math.round(cv.clientHeight*dpr));
+    var dpr=window.__rs(cv.clientWidth,cv.clientHeight),w=Math.max(1,Math.round(cv.clientWidth*dpr)),h=Math.max(1,Math.round(cv.clientHeight*dpr));
     if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;}
     var asp=w/h;cam.dist=Math.max(9,2.55/(Math.tan(cam.fov/2)*Math.min(asp,1.15)));
     EYE=eye();VP=mul(persp(cam.fov,asp,.5,60),lookAt(EYE,cam.target,[0,1,0]));
