@@ -285,7 +285,7 @@ html.gummy-dragging,html.gummy-dragging *{cursor:grabbing!important}
 .tw-page canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
 .tw-page canvas:active{cursor:grabbing}
 .tw-page .num{z-index:1;pointer-events:none}
-.tw-hint{position:absolute;top:5.5%;left:0;right:0;margin:0;text-align:center;font-family:var(--hand);font-size:1.05em;color:var(--paper-ink);opacity:.62;pointer-events:none;transition:opacity .8s;z-index:1}
+.tw-hint{position:absolute;bottom:17%;right:11%;margin:0;text-align:right;font-family:"Special Elite","Courier New",Courier,monospace;font-size:.78em;letter-spacing:.02em;color:#2A2426;opacity:.55;pointer-events:none;transition:opacity .8s;z-index:1;white-space:nowrap}
 .tw-hint.gone{opacity:0}
 .tw-finish{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);z-index:2;font-family:var(--hand);font-weight:700;font-size:.95em;line-height:1.2;padding:.12em .85em .18em;border:1.5px solid #5E5654;border-radius:999px;background:var(--paper);color:#5E5654;cursor:pointer;opacity:.85;transition:background .15s,color .15s,opacity .15s}
 .tw-finish:hover{background:#5E5654;color:#fff;opacity:1}
@@ -302,6 +302,10 @@ html.gummy-dragging,html.gummy-dragging *{cursor:grabbing!important}
 @keyframes twfade{from{opacity:0}to{opacity:1}}
 @keyframes twrise{0%{transform:translateY(70vh) rotate(-1.2deg)}70%{transform:translateY(-6px) rotate(.3deg)}100%{transform:none}}
 @media (prefers-reduced-motion:reduce){.tw-sheet.in,.tw-out{animation:none}.tw-finish.nudge{animation:none}}
+
+/* page 4: a line typed on the same machine */
+.typed-note{position:absolute;top:13%;left:13%;margin:0;font-family:"Special Elite","Courier New",Courier,monospace;font-size:1.3em;line-height:1;color:#2A2426;letter-spacing:.02em;white-space:nowrap;pointer-events:none}
+.typed-note i{font-style:normal;display:inline-block;transform:translateY(var(--y,0)) rotate(var(--r,0));opacity:var(--o,.9);text-shadow:0 0 .6px rgba(42,36,38,.35)}
 </style>
 </head>
 <body>
@@ -333,7 +337,7 @@ html.gummy-dragging,html.gummy-dragging *{cursor:grabbing!important}
       <!-- leaf 2 -->
       <div class="leaf paper">
         <div class="face front"><div class="pg gummy-page no-flip"><canvas id="pile-canvas" aria-label="A pile of gummy bears. Drag one into the jar."></canvas><span class="num">3</span></div></div>
-        <div class="face back"><div class="pg"><span class="num">4</span></div></div>
+        <div class="face back"><div class="pg"><p class="typed-note" aria-label="Dear someday,"><span aria-hidden="true"><i style="--y:-0.012em;--r:-0.84deg;--o:0.90">D</i><i style="--y:-0.030em;--r:0.09deg;--o:0.86">e</i><i style="--y:-0.031em;--r:0.02deg;--o:0.81">a</i><i style="--y:-0.005em;--r:-1.03deg;--o:0.81">r</i><i>&nbsp;</i><i style="--y:-0.005em;--r:0.78deg;--o:0.82">s</i><i style="--y:-0.019em;--r:0.31deg;--o:0.95">o</i><i style="--y:0.005em;--r:-0.25deg;--o:0.96">m</i><i style="--y:-0.032em;--r:0.86deg;--o:0.85">e</i><i style="--y:-0.025em;--r:-0.92deg;--o:0.85">d</i><i style="--y:0.022em;--r:-0.77deg;--o:0.89">a</i><i style="--y:0.010em;--r:-0.31deg;--o:0.89">y</i><i style="--y:-0.031em;--r:-1.06deg;--o:0.83">,</i></span></p><span class="num">4</span></div></div>
       </div>
 
       <!-- leaf 3 -->
