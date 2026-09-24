@@ -1,2 +1,2 @@
 # nom.github.io
-The magical world 
+This is a magical world.
