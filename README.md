@@ -11,6 +11,7 @@ A tiny hand-drawn book you can open, turn, and play with.
 I always wanted a book of my own.
 Not one you just read, but one you can play in:
 a photo booth, a jar of gummy bears, a typewriter,
+a library card waiting at the very back,
 all the little things I love, tucked between the pages.
 
 Whoever opens this book,
@@ -50,6 +51,14 @@ and you can save it as an image.
 
 🔊 Turn your sound on. The typewriter clicks and dings.
 💻 It works best on a computer, especially the typewriter.
+
+**Inside the back cover · Book pocket**
+Like an old library book, there's a kraft paper pocket at the end,
+with a borrowing card tucked inside.
+Tap it to pull the card out. A rubber stamp comes down
+and thunks today's date onto the next line, as if you just borrowed the book.
+Tap the card again for more stamps, or tap the pocket to slip it back in.
+The card remembers the days you came to visit (only on your device).
 
 ## How it's made
 
