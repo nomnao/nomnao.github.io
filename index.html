@@ -2061,5 +2061,24 @@ window.__rs=function(cw,ch){ var d=window.devicePixelRatio||1, k=Math.max(2,Math
   });
 })();
 </script>
+<!-- visitor stats (GoatCounter, no cookies) -->
+<script data-goatcounter="https://nomnao.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  // count which pages of the book people reach, once per page per visit
+  var NAMES=['cover','photo-booth','gummy-jar','typewriter','book-pocket','back-cover'], seen={};
+  function send(n){
+    var gc=window.goatcounter;
+    if(gc && gc.count){ gc.count({path:'page/'+NAMES[n], title:NAMES[n], event:true}); return true; }
+    return false;
+  }
+  document.addEventListener('bookstate',function(){
+    var n=window.__bookState;
+    if(typeof n!=='number' || !NAMES[n] || seen[n]) return;
+    seen[n]=true;
+    if(!send(n)){ var tries=0, t=setInterval(function(){ if(send(n)||++tries>20) clearInterval(t); },500); }
+  });
+})();
+</script>
 </body>
 </html>
