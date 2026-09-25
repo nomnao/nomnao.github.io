@@ -2,7 +2,7 @@
 
 A tiny hand-drawn book you can open, turn, and play with.
 
-👉 **[Open bookie](https://nomnao.github.io/)**
+👉 **[Open bookie](https://nomnao.github.io/bookie/)**
 
 ![bookie](preview.png)
 
